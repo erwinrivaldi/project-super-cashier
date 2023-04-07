@@ -1,3 +1,5 @@
+from tabulate import tabulate
+
 class Transaction:
 
   keranjang_belanja = {}
@@ -83,7 +85,7 @@ class Transaction:
     nama_item = input('Masukan barang yang ingin diganti harganya: ')
     update_jumlah_item = input('Masukan harga baru: ')
     if nama_item in self.keranjang_belanja.keys():
-       self.keranjang_belanja[nama_item] = (self.keranjang_belanja[nama_item][0], update_harga_item, self.keranjang_belanja[nama_item][0] * update_harga_item)
+       self.keranjang_belanja[nama_item] = (self.keranjang_belanja[nama_item][0], update_jumlah_item, self.keranjang_belanja[nama_item][0] * update_jumlah_item)
        print(f' Item dalam keranjang anda: {self.keranjang_belanja}')
        return self.keranjang_belanja
     else:
@@ -168,3 +170,21 @@ class Transaction:
     elif total_belanja >= 200_000:
       harga_akhir = total_belanja * 0.95
       print(f'Selamat Anda Mendapatkan Diskon 5%. \nPembayaran akhir Anda Rp {harga_akhir}')
+
+trx01 = Transaction("trx01")
+
+trx01.add_item()
+
+trx01.add_item()
+
+trx01.delete_item()
+
+trx01.reset_transaction()
+
+trx01.add_item()
+
+trx01.add_item()
+
+trx01.check_order()
+
+trx01.total_price()
