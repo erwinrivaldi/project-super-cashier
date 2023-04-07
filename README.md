@@ -1,4 +1,4 @@
-# project-super-cashier
+# Project Super Cashier
 
 ## Latar Belakang Masalah 
 Sebuah toko mempunyai kebutuhan untuk membuat program yang mengijinkan konsumen untuk melakukan transaksi secara mandiri.
