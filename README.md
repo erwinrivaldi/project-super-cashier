@@ -23,13 +23,13 @@ Sebuah toko mempunyai kebutuhan untuk membuat program yang mengijinkan konsumen 
 
 ## Test Case
 1. Menambahkan Item
-<img width="593" alt="testcase1" src="https://user-images.githubusercontent.com/128563448/230598839-d75eee53-e65d-4dbc-b8e0-4cb89f9b7f90.png">
+
 
 2. Menghapus Item
-<img width="609" alt="testcase2" src="https://user-images.githubusercontent.com/128563448/230598911-1b3c5850-0c4f-4c35-aee7-35e76712cf01.png">
+
 
 3. Reset Transaksi
-<img width="497" alt="testcase3" src="https://user-images.githubusercontent.com/128563448/230598964-60888261-b336-4d32-9f28-a559d6d992a0.png">
+
 
 4. Cek Keranjang Belanja & Total Transaksi
-<img width="514" alt="testcase4" src="https://user-images.githubusercontent.com/128563448/230599016-c9a312a8-3050-4c54-8ffe-e429f0986d73.png">
+
