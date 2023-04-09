@@ -12,7 +12,7 @@ Sebuah toko mempunyai kebutuhan untuk membuat program yang mengijinkan konsumen 
 6. Menghitung total belanja & diskon 
 
 ## Flowchart
-1. Karena setiap transaksi unik, maka input pertama yang kita butuhkan dari user adalah nomor transaksi. Bentuk nomor transaksi bisa berbentuk trxXX atau transaksi01.
+1. Karena setiap transaksi unik, maka input pertama yang kita butuhkan dari user adalah nomor transaksi. 
 2. Lalu kita membutuhkan input nama barang, jumlah barang dan juga harga barang dari user dengan metode add_item().
 3. Setelah user input barang, maka data tersebut akan tersimpan dalam keranjang belanja user.
 4. User bisa kembali menambahkan barang dengan metode add_item().
@@ -23,13 +23,14 @@ Sebuah toko mempunyai kebutuhan untuk membuat program yang mengijinkan konsumen 
 
 ## Test Case
 1. Menambahkan Item
-
+<img width="749" alt="testcase1" src="https://user-images.githubusercontent.com/128563448/230774894-d7d0ccaa-18c9-4d8e-b70a-4f8b9c76738e.png">
 
 2. Menghapus Item
-
+<img width="749" alt="testcase2" src="https://user-images.githubusercontent.com/128563448/230774911-62f8b117-4cd9-4b0f-8247-c8c6398857a6.png">
 
 3. Reset Transaksi
-
+<img width="745" alt="testcase3" src="https://user-images.githubusercontent.com/128563448/230774917-cd59a676-1dff-4d2e-ad66-7a63c2794b49.png">
 
 4. Cek Keranjang Belanja & Total Transaksi
+<img width="753" alt="testcase4" src="https://user-images.githubusercontent.com/128563448/230774920-50077d03-0a06-42fd-9584-c1a99f5b45a1.png">
 
