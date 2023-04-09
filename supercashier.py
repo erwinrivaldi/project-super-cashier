@@ -1,9 +1,11 @@
+#library
+from tabulate import tabulate
+import pandas as pd
+
 class Transaction:
 
-  keranjang_belanja = {}
-
-  def __init__ (self, no_transaksi):
-    self.no_transaksi = no_transaksi
+  def __init__ (self):
+    self.keranjang_belanja = {}
 
   def add_item(self):
     '''
@@ -19,12 +21,18 @@ class Transaction:
       dict: Isi keranjang belanja user
     '''
     self.nama_item = input('Masukan nama barang: ')
-    self.jumlah_item = int(input('Masukan jumlah barang: '))
-    self.harga_item = int(input('Masukan harga barang: '))
-    self.total_harga_item = self.jumlah_item * self.harga_item
-    self.keranjang_belanja[self.nama_item] = self.jumlah_item, self.harga_item, self.total_harga_item
-    print(f'Item yang telah ditambahkan: {self.keranjang_belanja}')
-    return self.keranjang_belanja
+    try:
+      self.jumlah_item = int(input('Masukan jumlah barang: '))
+      self.harga_item = int(input('Masukan harga barang: '))
+    except ValueError:
+      print(f'Harga barang harus dalam bentuk angka')
+    try:
+      self.total_harga_item = self.jumlah_item * self.harga_item
+      self.keranjang_belanja[self.nama_item] = [self.jumlah_item, self.harga_item, self.total_harga_item]
+      print(f'Anda telah menambahkan {self.nama_item} sejumlah {self.jumlah_item} dengan harga Rp {self.harga_item}')
+    except AttributeError:
+      print(f'Silakan coba input kembali barang anda') 
+    
 
   def update_nama_item(self):
     '''
@@ -40,12 +48,12 @@ class Transaction:
     '''
     nama_item = input('Masukan barang yang ingin diganti: ')
     update_nama_item = input('Masukan nama barang baru: ')
-    if nama_item in self.keranjang_belanja.keys():
-       self.keranjang_belanja[update_nama_item] = self.keranjang_belanja.pop(nama_item)
-       print(f'Item dalam keranjang anda: {self.keranjang_belanja}')
-       return self.keranjang_belanja
-    else:
-      print('Item yang anda masukan tidak ada di dalam keranjang')
+    try:
+      if nama_item in self.keranjang_belanja.keys():
+        self.keranjang_belanja[update_nama_item] = self.keranjang_belanja.pop(nama_item)
+        print(f'Anda telah mengganti {nama_item} menjadi {update_nama_item}')
+    except:
+        print('Item yang anda masukan tidak ada di dalam keranjang')
 
   def update_jumlah_item(self, nama_item, update_jumlah_item):
     '''
@@ -61,12 +69,13 @@ class Transaction:
     '''
     nama_item = input('Masukan barang yang ingin diganti jumlahnya: ')
     update_jumlah_item = input('Masukan jumlah baru: ')
-    if nama_item in self.keranjang_belanja.keys():
-       self.keranjang_belanja[nama_item] = (update_jumlah_item, self.keranjang_belanja[nama_item][1], update_jumlah_item * self.keranjang_belanja[nama_item][1])
-       print(f' Item dalam keranjang anda: {self.keranjang_belanja}')
-       return self.keranjang_belanja
-    else:
-      print('Item yang anda masukan tidak ada di dalam keranjang')
+    try:
+      if nama_item in self.keranjang_belanja.keys():
+        self.keranjang_belanja[nama_item] = [update_jumlah_item, self.keranjang_belanja[nama_item][1], update_jumlah_item * self.keranjang_belanja[nama_item][1]]
+        print(f' Item dalam keranjang anda: {self.keranjang_belanja}')
+        return self.keranjang_belanja
+    except:
+        print('Item yang anda masukan tidak ada di dalam keranjang')
     
   def update_harga_item(self):
     '''
@@ -103,9 +112,8 @@ class Transaction:
     nama_item = input('Masukan barang yang ingin dihapus: ')
     if nama_item in self.keranjang_belanja.keys():
       self.keranjang_belanja.pop(nama_item)
-      print(f' Anda telah menghapus {nama_item} dari keranjang')
-      print(f' Item dalam keranjang anda: {self.keranjang_belanja}')
-      return self.keranjang_belanja
+      print(f'Anda telah menghapus {nama_item} dari keranjang')
+      print(f'Item dalam keranjang anda: {self.keranjang_belanja.keys()}')
     else:
       print('Item yang anda masukan tidak ada di dalam keranjang')
 
@@ -137,10 +145,15 @@ class Transaction:
     Returns:
       tabel: Isi keranjang belanja user
     '''
-    total_harga = 0
-    for qty, price, tempTotal in self.keranjang_belanja.values():
-      headers = ['Nama Item', 'Jumlah Item', 'Harga per Item', 'Total Harga']
-    print(tabulate([(k,) + v for k, v in self.keranjang_belanja.items()], headers = headers, tablefmt = 'pipe'))
+    for key, value in self.keranjang_belanja.items():
+      if value[0] == 0:
+        print(f'Terdapat kesalahan input pada item {key}')
+    if self.keranjang_belanja == {}:
+      print(f'Keranjang belanja kosong')
+    else:
+      tabel_keranjang = pd.DataFrame(self.keranjang_belanja).T
+      headers = ['Nama Item', 'Jumlah Item', 'Harga Item', 'Total Harga']
+      print(tabulate(tabel_keranjang, headers = headers, tablefmt ="github"))
 
   def total_price(self):
     '''
@@ -153,6 +166,7 @@ class Transaction:
     Returns:
       str: Total belanja user
     '''
+
     total_belanja = 0
     for qty, price, tempTotal in self.keranjang_belanja.values():
       temp_keranjang_belanja = qty * price
