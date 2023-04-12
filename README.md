@@ -34,3 +34,8 @@ Sebuah toko mempunyai kebutuhan untuk membuat program yang mengijinkan konsumen 
 4. Cek Keranjang Belanja & Total Transaksi
 <img width="753" alt="testcase4" src="https://user-images.githubusercontent.com/128563448/230774920-50077d03-0a06-42fd-9584-c1a99f5b45a1.png">
 
+## Future Work
+Ke depannya ada beberapa hal yang bisa dikembangkan lagi dari project ini:
+1. Customer bisa memasukan nama dan mendapatkan nomor transaksi yang telah digenerate secara random oleh program
+2. Fitur memasukan kode / kupon untuk mendapatkan diskon tambahan atau gratis ongkir
+3. Fitur untuk merekam transaksi yang telah selesai 
